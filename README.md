@@ -49,7 +49,7 @@ This project demonstrates clean architecture with modular design, retry logic, c
         docker run --rm -p 3123:3123 -ti lp-programming-challenge-1
     ```
 
-## (Recommended) Steps to run the pipeline using make commands:
+### (Recommended) Steps to run the pipeline using make commands:
 1. Create virtual environment and install dependencies
 `make setup`
 2. Execute pipeline with optional arguments (use `make help` to understand how the commands work)
@@ -59,7 +59,7 @@ This project demonstrates clean architecture with modular design, retry logic, c
 4. Remove venv, cache and build artifacts
 `make clean`
 
-## Steps to run the pipeline using virtual environment
+### Steps to run the pipeline using virtual environment
 1. Create and activate virtual environment
 python3 -m venv .venv
 source .venv/bin/activate
@@ -83,7 +83,7 @@ pytest -q
 deactivate
 
 
-## Steps to run the script
+### Steps to run the script
 1. Create and activate virtual environment
 python3 -m venv .venv
 source .venv/bin/activate
@@ -96,6 +96,14 @@ pip3 install -r requirements.txt
 
 4. Run the ETL script
 python3 scripts/animals_etl.py
+
+---
+
+## Notes on Concurrency
+- The ETL pipeline leverages Python `asyncio` + `httpx` for concurrent fetch / transform / post.
+- Running under Uvicorn preserves async concurrency
+- This is an **I/O-bound** workload (HTTP calls to the challenge API), so `asyncio` was chosen.
+- For **CPU-heavy workloads**, we can consider offloading parts to threads or processes.
 
 ---
 
