@@ -1,7 +1,7 @@
 from __future__ import annotations
 import asyncio, sys
 
-from http_client import HttpClient
+from http_client import HttpClient, ValidationHTTPError
 
 from .api import AnimalsAPI
 from .config import parse_args
@@ -33,5 +33,8 @@ def main() -> None:
     args = parse_args()
     try:
         asyncio.run(run(args))
+    except ValidationHTTPError as e:
+        print(f"Validation error: {e.detail}", file=sys.stderr)
+        sys.exit(2)
     except KeyboardInterrupt:
         print("Aborted.", file=sys.stderr)

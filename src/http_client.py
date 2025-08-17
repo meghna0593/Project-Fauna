@@ -4,6 +4,15 @@ import sys, asyncio, random, uuid
 from typing import Optional
 import httpx
 
+class ValidationHTTPError(Exception):
+    """Raised on 422 responses with parsed validation details."""
+    def __init__(self, detail: object, *, method: str, path: str):
+        self.detail = detail
+        self.method = method
+        self.path = path
+        msg = f"422 Unprocessable Entity on {method} {path}: {detail}"
+        super().__init__(msg)
+
 class RetryPolicy:
     def __init__(
         self,
@@ -92,7 +101,7 @@ class HttpClient:
                         payload = {"detail": (resp.text or "Unprocessable Entity")}
                     detail = payload.get("detail", payload)
                     print(f"[req#{req_id}] 422 validation error on {method} {url}: {detail}", file=sys.stderr)
-                    resp.raise_for_status()
+                    raise ValidationHTTPError(detail, method=method, path=path)
 
                 # Fail fast, don’t retry
                 if 400 <= status < 500:
