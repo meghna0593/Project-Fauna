@@ -1,7 +1,7 @@
 __all__ = [
     "config",
     "cli",
-    "http_client",
+    "api",
     "models",
     "pipeline",
     "utils",
