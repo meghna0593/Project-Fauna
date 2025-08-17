@@ -132,10 +132,10 @@ class HttpClient:
                 params = kwargs.get("params")
                 has_json = kwargs.get("json") is not None
                 err_kind = f"HTTP {getattr(getattr(last_exc, 'response', None), 'status_code', 'ERR')}" \
-                           if isinstance(last_exc, httpx.HTTPStatusError) else "network"
+                        if isinstance(last_exc, httpx.HTTPStatusError) else "network"
                 print(f"[req#{req_id}] [retry {attempt}/{self.policy.retries}] {method} {url} "
-                      f"params={params} json={has_json} failed: {err_kind}: {last_exc}. "
-                      f"Sleeping {sleep:.2f}s", file=sys.stderr)
+                    f"params={params} json={has_json} failed: {err_kind}: {last_exc}. "
+                    f"Sleeping {sleep:.2f}s", file=sys.stderr)
                 await asyncio.sleep(sleep)
             else:
                 print(f"[req#{req_id}] [giving up] {method} {url}: {last_exc}", file=sys.stderr)
