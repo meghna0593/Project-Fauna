@@ -49,6 +49,12 @@ This project demonstrates clean architecture with modular design, retry logic, c
         docker run --rm -p 3123:3123 -ti lp-programming-challenge-1
     ```
 
+### Clone the Repository
+```
+git clone git@github.com:meghna0593/Project-Fauna.git
+cd project-fauna
+```
+
 ### (Recommended) Steps to run the pipeline using make commands:
 1. Create virtual environment and install dependencies
     ```
