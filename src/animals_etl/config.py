@@ -2,6 +2,7 @@ from __future__ import annotations
 import argparse, os
 
 def build_parser() -> argparse.ArgumentParser:
+    # Parse command-line args with env defaults
     p = argparse.ArgumentParser(description="Async Animals ETL")
     p.add_argument("--base-url", default=os.getenv("API_BASE_URL", "http://localhost:3123"))
     p.add_argument("--concurrency", type=int, default=int(os.getenv("CONCURRENCY", "8")))
