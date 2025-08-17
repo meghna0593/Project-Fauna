@@ -51,51 +51,80 @@ This project demonstrates clean architecture with modular design, retry logic, c
 
 ### (Recommended) Steps to run the pipeline using make commands:
 1. Create virtual environment and install dependencies
-`make setup`
+    ```
+    make setup
+    ```
 2. Execute pipeline with optional arguments (use `make help` to understand how the commands work)
-`make run`
+    ```
+    make run
+    ``` 
 3. Run tests
-`make test`
+    ```
+    make test
+    ```
 4. Remove venv, cache and build artifacts
-`make clean`
+    ```
+    make clean
+    ```
 
 ### Steps to run the pipeline using virtual environment
 1. Create and activate virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
+    ```
+    python3 -m venv .venv
+    source .venv/bin/activate
+    ```
 
 2. (Optional) Load env vars if you have a .env file
-source .env
-
+    ```
+    source .env
+    ```
 3. Install dependencies
-pip3 install -r requirements.txt
+    ```
+    pip3 install -r requirements.txt
+    ```
 
 4. Editable install so imports work
-pip3 install -e .
+    ```
+    pip3 install -e .
+    ```
 
 4. Run the barebones
-animals-etl
+    ```
+    animals-etl
+    ```
 
 5. To run tests
-pytest -q
+    ```
+    pytest -q
+    ```
 
 6. Exit virtual environment
-deactivate
+    ```
+    deactivate
+    ```
 
 
 ### Steps to run the script
 1. Create and activate virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
+    ```
+    python3 -m venv .venv
+    source .venv/bin/activate
+    ```
 
 2. (Optional) Load env vars if you have a .env file
-source .env
+    ```
+    source .env
+    ```
 
 3. Install dependencies
-pip3 install -r requirements.txt
+    ```
+    pip3 install -r requirements.txt
+    ```
 
 4. Run the ETL script
-python3 scripts/animals_etl.py
+    ```
+    python3 scripts/animals_etl.py
+    ```
 
 ---
 
