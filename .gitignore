@@ -1,0 +1,14 @@
+# Virtual environments
+.venv/
+
+# Environment files
+.env
+
+# Python cache/compiled
+__pycache__/
+
+# IDE
+.vscode/
+
+# macOS
+.DS_Store
