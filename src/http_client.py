@@ -1,4 +1,17 @@
-# animals_etl/http_client.py
+"""
+Reusable async HTTP client with retry and error handling.
+
+Components:
+- ValidationHTTPError: raised on 422 with parsed validation details
+- RetryPolicy: exponential backoff + jitter, configurable retries/status codes
+- HttpClient: async context manager wrapping httpx.AsyncClient
+  - Adds base_url, default headers, and X-Request-Id
+  - Retries transient 5xx and network errors
+  - Fails fast on 4xx
+  - Special handling for 422 validation errors
+
+Used across the ETL pipeline for robust API communication.
+"""
 from __future__ import annotations
 import sys, asyncio, random, uuid
 from typing import Optional

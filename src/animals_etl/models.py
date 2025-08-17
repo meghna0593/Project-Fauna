@@ -1,3 +1,15 @@
+"""
+TypedDict models for requests and responses to/from the Animals API.
+
+Includes:
+- BaseAnimal: minimal fields from /animals/v1/animals
+- AnimalRaw: paginated response
+- AnimalDetail: detailed record from /animals/v1/animals/{id}
+- AnimalTransformed: ETL output (friends split, born_at ISO-8601)
+- AnimalsBatch: list of transformed animals ready for POST
+
+"""
+
 from __future__ import annotations
 from typing import TypedDict, List, Optional
 

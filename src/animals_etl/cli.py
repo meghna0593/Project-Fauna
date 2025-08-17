@@ -1,3 +1,16 @@
+"""
+Command-line entrypoint for the Animals ETL pipeline.
+
+- Parses CLI args and config
+- Initializes HttpClient and AnimalsAPI
+- Orchestrates pipeline steps:
+    1. Fetch all animal IDs (with limited page concurrency)
+    2. Fetch details concurrently
+    3. Transform records
+    4. Post transformed batches
+
+Handles validation errors (422) and KeyboardInterrupt cleanly for user experience.
+"""
 from __future__ import annotations
 import asyncio, sys
 

@@ -1,3 +1,14 @@
+"""
+Async API wrapper around the Animals service endpoints.
+
+Provides a typed interface for:
+- Listing paginated animals (`list_animals`)
+- Fetching details for a single animal (`get_animal`)
+- Posting transformed animal batches to "home" (`post_home`)
+
+All methods return typed dicts from `models.py` and handle non-JSON responses
+gracefully with stderr warnings.
+"""
 from __future__ import annotations
 import sys
 from typing import Any, Dict
@@ -7,6 +18,7 @@ from http_client import HttpClient
 from .models import AnimalRaw, AnimalDetail, AnimalsBatch
 
 class AnimalsAPI:
+
     def __init__(self, http: HttpClient):
         self.http = http
 
