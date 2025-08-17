@@ -18,6 +18,9 @@ pip3 install -e .
 4. Run the barebones
 animals-etl
 
+5. To run tests
+pytest -q
+
 
 ## Steps to run the script
 1. Create and activate virtual environment
