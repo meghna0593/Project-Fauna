@@ -14,4 +14,4 @@ source .env
 pip3 install -r requirements.txt
 
 4. Run the ETL script
-python3 animals_etl_simple.py
+python3 scripts/animals_etl.py
